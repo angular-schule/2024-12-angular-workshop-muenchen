@@ -17,6 +17,6 @@ export class DashboardComponent {
 
   constructor() {
     // setTimeout(() => this.books = [], 3000);
-    this.books.set([]);
+    setTimeout(() => this.books.set([]), 3000);
   }
 }
