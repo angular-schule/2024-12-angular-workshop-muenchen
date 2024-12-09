@@ -33,7 +33,6 @@ export class DashboardComponent {
     rating: 1
   }])
 
-
   constructor() {
     // setTimeout(() => this.books = [], 3000);
     // setTimeout(() => this.books.set([]), 3000);
