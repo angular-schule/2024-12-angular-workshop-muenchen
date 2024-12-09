@@ -37,4 +37,12 @@ export class DashboardComponent {
     // setTimeout(() => this.books = [], 3000);
     // setTimeout(() => this.books.set([]), 3000);
   }
+
+  doRateUp(book: Book) {
+    console.table(book);
+  }
+
+  doRateDown(book: Book) {
+    console.table(book);
+  }
 }

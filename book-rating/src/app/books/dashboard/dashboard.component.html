@@ -1,6 +1,10 @@
 <!-- <pre>{{ books() | json }}</pre> -->
 
 @for (book of books(); track book) {
-  <app-book [book]="book" />
+  <app-book
+    [book]="book"
+    (rateUp)="doRateUp($event)"
+    (rateDown)="doRateDown($event)"
+  />
 }
 
