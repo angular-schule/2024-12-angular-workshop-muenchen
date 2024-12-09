@@ -9,10 +9,10 @@ import { Book } from '../shared/book';
 })
 export class BookComponent {
 
-  // alter Stil
+  // alter Stil - undefined ist immer ein Problem :-(
   // @Input() book: Book | undefined
 
   // neuer Stil (mit Signal)
-  book = input<Book>();
+  book = input.required<Book>();
 
 }
