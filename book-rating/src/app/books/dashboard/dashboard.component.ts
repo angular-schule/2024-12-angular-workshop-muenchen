@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Book } from '../shared/book';
+import { JsonPipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [JsonPipe, UpperCasePipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
