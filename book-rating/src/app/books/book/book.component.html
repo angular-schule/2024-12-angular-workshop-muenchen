@@ -8,5 +8,15 @@
       </h2>
     </div>
     <p>{{ book().description }}</p>
+
+    <!--- RICHTIG MIESER CODE -->
+    <!--- TODO: fix me -->
+    <!--
+    1. Logik im HTML
+    2. SRP verletzt
+    3. Objekt mutiert!
+    -->
+    <button class="btn btn-primary me-2" (click)="book().rating = book().rating - 1">-</button>
+    <button class="btn btn-primary" (click)="book().rating = book().rating + 1">+</button>
   </div>
 </div>
