@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Book } from '../shared/book';
 import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { BookComponent } from "../book/book.component";
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,16 +34,24 @@ export class DashboardComponent {
     rating: 1
   }])
 
-  constructor() {
-    // setTimeout(() => this.books = [], 3000);
-    // setTimeout(() => this.books.set([]), 3000);
-  }
+  br = inject(BookRatingService);
 
   doRateUp(book: Book) {
-    console.table(book);
+    const ratedBook = this.br.rateUp(book);
+    this.updateAndSort(ratedBook);
   }
 
   doRateDown(book: Book) {
-    console.table(book);
+    const ratedBook = this.br.rateDown(book);
+    this.updateAndSort(ratedBook);
+  }
+
+  updateAndSort(ratedBook: Book) {
+
+    const newBook = this.books()
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+      .sort((a, b) => b.rating - a.rating);
+
+    this.books.set(newBook);
   }
 }
