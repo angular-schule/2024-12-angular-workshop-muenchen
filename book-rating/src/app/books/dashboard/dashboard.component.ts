@@ -3,10 +3,11 @@ import { Component, inject, signal } from '@angular/core';
 import { BookComponent } from '../book/book.component';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookCreateComponent } from "../book-create/book-create.component";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [BookComponent],
+  imports: [BookComponent, BookCreateComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
