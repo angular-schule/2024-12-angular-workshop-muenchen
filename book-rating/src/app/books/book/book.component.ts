@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { Book } from '../shared/book';
 
 @Component({
@@ -16,6 +16,8 @@ export class BookComponent {
   // @Output rateUp = new EventEmitter<Book>();
 
   book = input.required<Book>();
+  minRating = input<number>(1);
+  maxRating = input<number>(5);
 
   rateUp = output<Book>();
   rateDown = output<Book>();
@@ -27,4 +29,7 @@ export class BookComponent {
   doRateDown() {
     this.rateDown.emit(this.book());
   }
+
+  rateDownAllowed = computed(() => this.book().rating > this.minRating());
+  rateUpAllowed   = computed(() => this.book().rating < this.maxRating());
 }
