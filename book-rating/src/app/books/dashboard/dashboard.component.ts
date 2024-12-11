@@ -1,12 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
+
+import { BookComponent } from '../book/book.component';
 import { Book } from '../shared/book';
-import { JsonPipe, UpperCasePipe } from '@angular/common';
-import { BookComponent } from "../book/book.component";
 import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [JsonPipe, UpperCasePipe, BookComponent],
+  imports: [BookComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

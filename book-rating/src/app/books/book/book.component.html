@@ -12,7 +12,13 @@
     </div>
     <p>{{ book().description }}</p>
 
-    <button class="btn btn-primary me-2" (click)="doRateDown()">-</button>
-    <button class="btn btn-primary"      (click)="doRateUp()">+</button>
+    <!-- mieser code -->
+    <!--
+    1. Fachlichkeit in der "dummen" Componente
+    2. Logik im HTML
+    3. Single Responsibility
+    -->
+    <button class="btn btn-primary me-2" (click)="doRateDown()" [disabled]="book().rating < 2">-</button>
+    <button class="btn btn-primary"      (click)="doRateUp()" [disabled]="book().rating > 4">+</button>
   </div>
 </div>
