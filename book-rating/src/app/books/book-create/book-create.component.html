@@ -5,8 +5,14 @@
   <div class="form-group">
     <label for="isbn">ISBN</label>
     <input [formControl]="c.isbn" type="text" class="form-control" id="isbn">
-    @if (false) {
+    @if (isInvalid(c.isbn)) {
       <div class="feedback-error">Die ISBN ist ungültig!</div>
+    }
+    @if (hasError(c.isbn, 'required')) {
+      <div class="feedback-error">Bitte geben Sie etwas ein!</div>
+    }
+    @if (hasError(c.isbn, 'minlength')) {
+      <div class="feedback-error">Bitte geben Sie mehr als ein Zeichen ein!</div>
     }
   </div>
 
@@ -19,7 +25,6 @@
     <label for="description">Beschreibung</label>
     <textarea [formControl]="c.description" class="form-control" id="description"></textarea>
   </div>
-
 
   <button
     type="submit" class="btn btn-primary mb-4">Erstellen</button>

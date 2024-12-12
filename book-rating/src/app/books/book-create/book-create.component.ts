@@ -26,4 +26,12 @@ export class BookCreateComponent {
     })
   });
 
+  isInvalid(c: FormControl) {
+    return c.invalid && c.touched;
+  }
+
+  hasError(c: FormControl, errorCode: string) {
+    return c.hasError(errorCode) && c.touched;
+  }
+
 }
