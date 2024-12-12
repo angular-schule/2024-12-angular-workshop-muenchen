@@ -1,9 +1,10 @@
 import { Component, computed, input, output } from '@angular/core';
 import { Book } from '../shared/book';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
 })
