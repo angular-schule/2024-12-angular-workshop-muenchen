@@ -4,6 +4,7 @@ import { BookComponent } from '../book/book.component';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookCreateComponent } from "../book-create/book-create.component";
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,24 +19,14 @@ export class DashboardComponent {
 
   // NEU: Signals
   // mit Duck-Typing 🦆
-  books = signal<Book[]>([{
-    isbn: '000',
-    title: 'Angular',
-    description: 'Tolles Buch',
-    rating: 5
-  }, {
-    isbn: '111',
-    title: 'React',
-    description: 'Halt nicht Angular',
-    rating: 3
-  }, {
-    isbn: '333',
-    title: 'jQuery',
-    description: 'Veraltet',
-    rating: 1
-  }])
+  books = signal<Book[]>([])
 
   br = inject(BookRatingService);
+  bs = inject(BookStoreService);
+
+  constructor() {
+    this.bs.getAllBooks().subscribe(b => this.books.set(b));
+  }
 
   doRateUp(book: Book) {
     const ratedBook = this.br.rateUp(book);
