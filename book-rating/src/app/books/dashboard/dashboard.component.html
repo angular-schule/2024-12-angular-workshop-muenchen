@@ -1,4 +1,6 @@
-<app-book-create />
+<app-book-create
+  (create)="addBook($event)"
+/>
 
 @for (book of books(); track book) {
   <app-book

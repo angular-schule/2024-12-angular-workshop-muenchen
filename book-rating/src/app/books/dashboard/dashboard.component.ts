@@ -59,4 +59,8 @@ export class DashboardComponent {
 
     this.books.set(newBook);
   }
+
+  addBook(newBook: Book) {
+    this.books.update(books => [...books, newBook]);
+  }
 }

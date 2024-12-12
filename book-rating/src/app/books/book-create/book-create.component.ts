@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'app-book-create',
@@ -8,6 +9,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './book-create.component.scss'
 })
 export class BookCreateComponent {
+
+  create = output<Book>();
 
   bookForm = new FormGroup({
 
@@ -32,6 +35,17 @@ export class BookCreateComponent {
 
   hasError(c: FormControl, errorCode: string) {
     return c.hasError(errorCode) && c.touched;
+  }
+
+  submitForm() {
+
+    const newBook: Book = {
+      ...this.bookForm.getRawValue(),
+      rating: 1
+    }
+
+    this.create.emit(newBook);
+    this.bookForm.reset();
   }
 
 }
