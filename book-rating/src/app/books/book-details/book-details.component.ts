@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
@@ -10,6 +10,14 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class BookDetailsComponent {
 
   route = inject(ActivatedRoute);
-  isbn = this.route.snapshot.paramMap.get('isbn');
+
+  // snapshot aktualisiert sich nicht 😞
+  //isbn = this.route.snapshot.paramMap.get('isbn');
+
+  isbn = signal('');
+
+  constructor() {
+    this.route.paramMap.subscribe(paramMap => this.isbn.set(paramMap.get('isbn') || ''))
+  }
 
 }
