@@ -1,6 +1,6 @@
 import { Component, ElementRef, signal, viewChild } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { fromEvent, concatMap, takeUntil, first } from 'rxjs';
+import { fromEvent, concatMap, takeUntil, first, Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './dragdrop.component.html',
@@ -20,6 +20,8 @@ export class DragdropComponent {
 
   targetPosition = signal({ x: 100, y: 80 });
 
+  subscription: Subscription | undefined;
+
   constructor() {
     /**
      * Nutze RxJS, um die rote Box mit Drag-and-drop zu bewegen.
@@ -35,7 +37,9 @@ export class DragdropComponent {
 
     /******************************/
 
-    
+    this.mouseDown$.subscribe(_ => this.subscription = this.mouseMove$.subscribe(mouseMove => this.setTargetPosition(mouseMove)));
+    this.mouseUp$.subscribe(_ => this.subscription?.unsubscribe());
+
     /******************************/
   }
 
