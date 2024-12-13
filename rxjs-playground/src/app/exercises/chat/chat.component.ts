@@ -36,7 +36,21 @@ export class ChatComponent {
 
     /**************!!**************/
 
-     EMPTY.subscribe({                                   
+    let merged = merge(this.msg.julia$, this.msg.georg$, this.msg.john$);
+
+    this.msg.julia$.subscribe({
+      complete: () => this.log('JULIA left')
+    });
+
+    this.msg.georg$.subscribe({
+      complete: () => this.log('GEORG left')
+    });
+
+    this.msg.john$.subscribe({
+      complete: () => this.log('JOHN left')
+    });
+
+    merged.subscribe({
       next: e => this.log(e),
       error: err => this.log('❌ ERROR: ' + err),
       complete: () => this.log('✅ All members left')
