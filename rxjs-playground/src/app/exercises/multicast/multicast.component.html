@@ -22,7 +22,7 @@
 
 <ul class="mt-4">
   <li>Nutze den Service <code>MeasureValuesService</code>, um Livedaten zu empfangen und schreibe sie in das Property <code>measureValues$</code>.</li>
-  <li>Auf der Browswer-Konsole kannst Du beobachten, wie viele Subscriptions auf die Quelle erzeugt werden.
+  <li>Auf der Browser-Konsole kannst Du beobachten, wie viele Subscriptions auf die Quelle erzeugt werden.
     <li>Verwende dann <a href="https://rxjs.dev/api/operators/share" target="_blank"><code>share()</code></a>, um das Observable "heiß" zu machen.
     <li>Setze das gleiche dann mit verschiedenen Subjects um: <code>Subject</code>, <code>BehaviorSubject</code>, <code>ReplaySubject</code>.</li>
     <li>Vorsicht: Dieser Code hat einen potenziellen Memory Leak, weil die manuellen Subscriptions nicht beendet werden.</li>
