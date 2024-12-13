@@ -23,7 +23,21 @@ export class CreatingComponent {
 
     /******************************/
 
-    of('🙂', '😎', '😍').subscribe(e => this.log(e))
+    // Observer
+    const observer = {
+      next: (e: string) => this.log(e),
+      error: (e: any) => this.log('ERROR ' + e),
+      complete: () => this.log('COMPLETE')
+    };
+
+    // Observable
+    const observable = of('🙂', '😎', '😍');
+
+    // Subscription
+    const subscription = observable.subscribe(observer);
+    subscription.unsubscribe();
+
+    // Reactive --> Push statt Pull Prinzip
 
 
     /******************************/
