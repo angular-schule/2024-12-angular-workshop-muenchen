@@ -1,4 +1,4 @@
-import { LOCALE_ID, ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { LOCALE_ID, ApplicationConfig, provideExperimentalZonelessChangeDetection, provideZoneChangeDetection } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
@@ -10,7 +10,8 @@ registerLocaleData(localeDe);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
+    // provideExperimentalZonelessChangeDetection(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
     { provide: LOCALE_ID, useValue: 'de' },
