@@ -30,7 +30,7 @@ export class HigherorderComponent {
 
     /**************!!**************/
 
-    this.result$ = this.source$.pipe(
+    this.result$ = this.source$.pipe(mergeMap(src => this.es.echo(src))
     );
 
     /**************!!**************/

@@ -22,8 +22,7 @@ export class ErrorhandlingComponent {
     this.ds.getData().pipe(
 
       /******************************/
-
-      
+      catchError((err, caught) => caught)
       /******************************/
 
     ).subscribe({
